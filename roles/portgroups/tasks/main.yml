@@ -1,0 +1,21 @@
+---
+- name: Login to ESX
+  community.vmware.vmware_host:
+    hostname: "{{ vsphere_host }}"
+    username: "{{ vsphere_user }}"
+    password: "{{ vsphere_password }}"
+    validate_certs: "{{ vsphere_validate_certs }}"
+  delegate_to: localhost
+
+- name: Add port groups to ESXi hosts
+  community.vmware.vmware_dvs_portgroup:
+    hostname: "{{ vsphere_host }}"
+    username: "{{ vsphere_user }}"
+    password: "{{ vsphere_password }}"
+    validate_certs: "{{ vsphere_validate_certs }}"
+    switch_name: "{{ item.vswitch }}"
+    portgroup_name: "{{ item.name }}"
+    vlan_id: "{{ item.vlan }}"
+    state: present
+  delegate_to: localhost
+  loop: "{{ portgroups }}"

@@ -1,0 +1,13 @@
+vsphere_host: "your_vcenter_server"
+vsphere_user: "administrator@vsphere.local"
+vsphere_password: "your_vcenter_password"
+vsphere_validate_certs: False
+
+# Define port groups + VLANs
+portgroups:
+  - name: "Example100"
+    vlan: 100
+    vswitch: "vSwitch0"
+  - name: "Example200"
+    vlan: 200
+    vswitch: "vSwitch0"

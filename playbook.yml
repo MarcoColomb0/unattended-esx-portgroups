@@ -1,0 +1,6 @@
+---
+- name: Add portgroups to ESX hosts
+  hosts: esxi_hosts
+  gather_facts: no
+  roles:
+    - portgroups
